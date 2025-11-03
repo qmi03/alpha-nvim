@@ -43,7 +43,8 @@ local leader = "SPC"
 --- @param txt string
 --- @param keybind (function|string)? optional
 --- @param keybind_opts table? optional
-local function button(sc, txt, keybind, keybind_opts)
+--- @param hl string? optional
+local function button(sc, txt, keybind, keybind_opts, hl)
     local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
 
     local opts = {
@@ -51,6 +52,7 @@ local function button(sc, txt, keybind, keybind_opts)
         shortcut = sc,
         cursor = 3,
         width = 50,
+        hl = hl,
         align_shortcut = "right",
         hl_shortcut = "Keyword",
     }
