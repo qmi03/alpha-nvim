@@ -44,7 +44,7 @@ local leader = "SPC"
 --- @param keybind (function|string)? optional
 --- @param keybind_opts table? optional
 --- @param hl string? optional
-local function button(sc, txt, keybind, keybind_opts, hl)
+local function button_helper(sc, txt, keybind, keybind_opts, hl)
     local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
 
     local opts = {
@@ -81,13 +81,13 @@ end
 local buttons = {
     type = "group",
     val = {
-        button("e", "  New file", "<cmd>ene <CR>"),
-        button("SPC f f", "󰈞  Find file"),
-        button("SPC f h", "󰊄  Recently opened files"),
-        button("SPC f r", "  Frecency/MRU"),
-        button("SPC f g", "󰈬  Find word"),
-        button("SPC f m", "  Jump to bookmarks"),
-        button("SPC s l", "  Open last session"),
+        button_helper("e", "  New file", "<cmd>ene <CR>"),
+        button_helper("SPC f f", "󰈞  Find file"),
+        button_helper("SPC f h", "󰊄  Recently opened files"),
+        button_helper("SPC f r", "  Frecency/MRU"),
+        button_helper("SPC f g", "󰈬  Find word"),
+        button_helper("SPC f m", "  Jump to bookmarks"),
+        button_helper("SPC s l", "  Open last session"),
     },
     opts = {
         spacing = 1,
@@ -115,7 +115,7 @@ local config = {
 }
 
 return {
-    button = button,
+    button_helper = button_helper,
     section = section,
     config = config,
     -- theme config
